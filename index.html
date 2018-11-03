@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/fusionchart/fusioncharts.js"></script>
+        <script type="text/javascript" src="js/fusionchart/fusioncharts.widgets.js"></script>
+        <script src="js/tmi.min.js"></script>
+    </head>
+    <body>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                FusionCharts.ready(function () {
+                    var chart = new FusionCharts({
+                        type: 'vled',
+                        renderAt: 'salt-meter',
+                        id: 'cs-salt-meter',
+                        width: '200',
+                        height: '500',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "caption": "Salt-Level",
+                                "lowerLimit": "0",
+                                "upperLimit": "100",
+                                "lowerLimitDisplay": "Calm as Daisy",
+                                "upperLimitDisplay": "Salty AF",
+                                "numberSuffix": "%",
+                                "showValue": "1",
+                                "valueFontSize": "12",
+                                "showhovereffect": "0",
+                                "chartBottomMargin": "25"
+                            },
+                            "colorRange": {
+                                "color": [
+                                    {
+                                        "minValue": "0",
+                                        "maxValue": "5",
+                                        "code": "#71A501"
+                                    }, {
+                                        "minValue": "6",
+                                        "maxValue": "10",
+                                        "code": "#77A101"
+                                    }, {
+                                        "minValue": "11",
+                                        "maxValue": "15",
+                                        "code": "#7C9C01"
+                                    }, {
+                                        "minValue": "16",
+                                        "maxValue": "20",
+                                        "code": "#829801"
+                                    }, {
+                                        "minValue": "21",
+                                        "maxValue": "25",
+                                        "code": "#889301"
+                                    }, {
+                                        "minValue": "26",
+                                        "maxValue": "30",
+                                        "code": "#8E8F01"
+                                    }, {
+                                        "minValue": "31",
+                                        "maxValue": "35",
+                                        "code": "#938A01"
+                                    }, {
+                                        "minValue": "36",
+                                        "maxValue": "40",
+                                        "code": "#998501"
+                                    }, {
+                                        "minValue": "41",
+                                        "maxValue": "45",
+                                        "code": "#9F8101"
+                                    }, {
+                                        "minValue": "46",
+                                        "maxValue": "50",
+                                        "code": "#A57C01"
+                                    }, {
+                                        "minValue": "51",
+                                        "maxValue": "55",
+                                        "code": "#AA7800"
+                                    }, {
+                                        "minValue": "56",
+                                        "maxValue": "60",
+                                        "code": "#B07300"
+                                    }, {
+                                        "minValue": "61",
+                                        "maxValue": "65",
+                                        "code": "#B66F00"
+                                    }, {
+                                        "minValue": "66",
+                                        "maxValue": "70",
+                                        "code": "#BC6A00"
+                                    }, {
+                                        "minValue": "71",
+                                        "maxValue": "75",
+                                        "code": "#C16500"
+                                    }, {
+                                        "minValue": "76",
+                                        "maxValue": "80",
+                                        "code": "#C76100"
+                                    }, {
+                                        "minValue": "81",
+                                        "maxValue": "85",
+                                        "code": "#CD5C00"
+                                    }, {
+                                        "minValue": "86",
+                                        "maxValue": "90",
+                                        "code": "#D35800"
+                                    }, {
+                                        "minValue": "91",
+                                        "maxValue": "95",
+                                        "code": "#D85300"
+                                    }, {
+                                        "minValue": "96",
+                                        "maxValue": "100",
+                                        "code": "#DE4F00"
+                                    }
+                                ]
+                            },
+                            "value": "50"
+                        }
+
+                    })
+                            .render();
+                });
+
+                var client = new tmi.client(options);
+
+                client.connect();
+
+                client.on('connected', function (address, port) {
+                    client.action("revenge0fthesm1th", "just connected!");
+                });
+                client.on('chat', function (channel, user, message, self) {
+                    var regcheck = new RegExp("^!salt ([0-9]{0,3})$");
+
+                    if (regcheck.test(message)) {
+                        var result = message.split(" ");
+                        var resultcheck = result[1];
+
+                        if (resultcheck >= 0 && resultcheck <= 100) {
+                            FusionCharts.items["cs-salt-meter"].feedData("value=" + resultcheck);
+                        }
+                    }
+                });
+            });
+        </script>
+        <br />
+        <div id="salt-meter"></div>
+    </body>
+</html>
