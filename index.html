@@ -21,7 +21,7 @@
                                 dataFormat: 'json',
                                 dataSource: {
                                     "chart": {
-                                        "caption": "Temperature Monitor",
+                                        "caption": "Salt Meter",
                                         "lowerLimit": "0",
                                         "upperLimit": "100",
                                         "decimals": "1",
@@ -40,6 +40,7 @@
                                     },
                                     "value": "50",
                                     //All annotations are grouped under this element
+                                    /*
                                     "annotations": {
                                         "showbelow": "101",
                                         "groups": [{
@@ -60,7 +61,7 @@
                                                     }]
                                             }]
 
-                                    },
+                                    },*/
                                 },
                                 "events": {
                                     "initialized": function (evt, arg) {
@@ -85,7 +86,7 @@
                                                     chartObj = evtObj.sender,
                                                     val = chartObj.getData(),
                                                     annotations = chartObj.annotations;
-
+                                            /*
                                             if (val >= -4.5) {
                                                 code = "#00FF00";
                                             } else if (val < -4.5 && val > -6) {
@@ -96,6 +97,7 @@
                                             annotations.update("background", {
                                                 "fillColor": code
                                             });
+                                            */
                                         };
                                     },
                                     "renderComplete": function (evt, arg) {
