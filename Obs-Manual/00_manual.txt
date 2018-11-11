@@ -1,0 +1,30 @@
+01. Insert Scene by Browser
+
+02.
+  a) Click the tickbox for local File
+  b) Widht: 90
+  c) Height: 380
+  d) FPS: 60 [ Or if you prefer another Frame setting. It will be smoother the higher the FPS ;) ]
+  e) CSS: Important; Clear out the Custom CSS Setting
+
+Disclaimer: CSS is used for any Graphic or Color setting of a Website.
+
+  f) Tick off: Deactivate, if source is not visible
+  g) Tick off: Browser refresh, when Scene gets activ
+
+3. Add Filter by Right-Clicking the inserted Browser Source.
+
+4. Add "Chroma Key" by clicking on the plus on the bottom of the newly opend window
+
+5. Add the following settings for the Chroma Key:
+  a) Key-Color-Type: Custom
+  b) Key-Color: Choose Color -> On bottom Right --> Html: #0000ff
+  c) Similarity: 333
+  d) Smoothness: 183
+  e) Key Color Spill Reduction: 1
+  f) Opacity: 100
+  g) Contrast: 0.00
+  h) Brightness: 0.00
+  i) Gamma: 0.00
+
+6. Enjoy :)
