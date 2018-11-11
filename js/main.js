@@ -10,6 +10,7 @@ var options = {
         username: "chuchi_bot",
         password: "oauth:wgt8wn2il4ezvvmno47fkqu6yypidt"
     },
-    channels: ['revenge0fthesm1th']
+    /*channels: ['revenge0fthesm1th']*/
+    channels: ['chuchi_chaestlis_']
 };
 
